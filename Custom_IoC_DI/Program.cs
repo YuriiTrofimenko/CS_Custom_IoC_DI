@@ -12,7 +12,7 @@ namespace Custom_IoC_DI
         static void Main(string[] args)
         {
             // IClass c1 = new MyClass();
-            Type myClassType = Type.GetType("Custom_IoC_DI.MyClass");
+            /* Type myClassType = Type.GetType("Custom_IoC_DI.MyClass");
             IClass c1 = ((IClass)myClassType
                 .GetConstructor(Type.EmptyTypes)
                 .Invoke(null)
@@ -29,8 +29,15 @@ namespace Custom_IoC_DI
             // c1.PrintInfo();
             MethodInfo printMethodInfo =
                 myClassType.GetMethod("PrintInfo", BindingFlags.Instance | BindingFlags.Public);
-            printMethodInfo.Invoke(c1, null);
+            printMethodInfo.Invoke(c1, null); */
 
+            UserController userController = new UserController();
+
+            Container container = new Container();
+            container.Inject(userController);
+
+            userController.GetTop3UserIds(new int[] { 1, 9, 7, 2 });
+            userController.DeleteUser(new { Id = 122, Name = "User1" });
         }
     }
 }
