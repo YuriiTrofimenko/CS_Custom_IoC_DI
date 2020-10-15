@@ -11,7 +11,9 @@ namespace Custom_IoC_DI
     {
         // public UserService userService = new UserService();
         [Inject]
-        public UserService userService;
+        public IUserService userService;
+
+        public String seviceName;
 
         public void GetTop3UserIds(int[] usersIds) {
             userService.Top3UsersIds(usersIds);
