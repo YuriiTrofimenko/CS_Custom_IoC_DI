@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Custom_IoC_DI
 {
-    // [Service]
+    //[InjectionCandidate]
     class UserService2 : IUserService
     {
         public void Top3UsersIds(int[] usersIds)

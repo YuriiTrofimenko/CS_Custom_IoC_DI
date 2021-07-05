@@ -27,6 +27,12 @@ namespace Custom_IoC_DI
                       .GetTypes()
                       .Where(t => typeForInject.IsAssignableFrom(t) && !t.IsAbstract)
                       .ToList();
+
+                    foundImplementations = 
+                        foundImplementations.Where(type => 
+                        type.GetCustomAttribute<InjectionCandidate>() != null)
+                        .ToList();
+
                     if (foundImplementations.Count == 0)
                     {
                       throw new Exception($"Implementation for {typeForInject.FullName} not found");
